@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: httpd
+  name: httpd
+  labels:
+    app.kubernetes.io/part-of: httpd
+    app: httpd
+    environment: production
+spec:
+  selector:
+    matchLabels:
+      app: httpd
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/part-of: qfwk
+        app: httpd
+    spec:
+      containers:
+        - name: httpd
+          image: custom-httpd:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1000Mi
+              cpu: 500m
+            requests:
+              memory: 1000Mi
+              cpu: 250m

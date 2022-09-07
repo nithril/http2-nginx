@@ -25,11 +25,13 @@
 
 ### Ack your host file
 
+I simply update my `/etc/hosts` adding name "minikube" resolved to the minikube IP:
+
 Get the minikube IP 
 
     minikube service -n opportal-pro-ingress nginx-np
 
-At that point I simply update my hosts adding name "minikube" resolved to the minikube IP:
+Add entry (where the IP has to be replaced by the output of the minikube service command):
 
     192.168.49.2 minikube
 

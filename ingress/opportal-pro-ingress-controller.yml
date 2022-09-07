@@ -35,7 +35,6 @@ spec:
       containers:
         - args:
             - /nginx-ingress-controller
-            - --default-backend-service=$(POD_NAMESPACE)/ingress-nginx-portal-pro-defaultbackend
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx-portal-pro-controller
             - --election-id=ingress-controller-leader-nginx-opportal-pro
             - --controller-class=k8s.io/ingress-nginx
@@ -340,8 +339,6 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    service.beta.kubernetes.io/azure-load-balancer-resource-group: rg-opportal-http2
   finalizers:
     - service.kubernetes.io/load-balancer-cleanup
   labels:
@@ -352,7 +349,6 @@ metadata:
   namespace: opportal-pro-ingress
 spec:
   externalTrafficPolicy: Local
-  loadBalancerIP: 20.238.253.57
   ports:
     - name: http
       port: 80

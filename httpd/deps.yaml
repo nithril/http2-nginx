@@ -20,8 +20,8 @@ spec:
     spec:
       containers:
         - name: httpd
-          image: custom-httpd:1.0.0
-          imagePullPolicy: Always
+          image: custom-httpd:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
               protocol: TCP
